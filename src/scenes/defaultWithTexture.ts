@@ -8,6 +8,9 @@ import { GroundBuilder } from "@babylonjs/core/Meshes/Builders/groundBuilder";
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
 import {CreateSceneClass} from "../createScene";
 
+// @ts-ignore
+import Recast from "recast-detour"
+
 // If you don't need the standard material you will still need to import it since the scene requires it.
 // import "@babylonjs/core/Materials/standardMaterial";
 import { Texture } from "@babylonjs/core/Materials/Textures/texture";
@@ -22,7 +25,9 @@ export class DefaultSceneWithTexture implements CreateSceneClass {
     ): Promise<Scene> => {
         // This creates a basic Babylon Scene object (non-mesh)
         const scene = new Scene(engine);
-    
+
+        const recast = await Recast();
+
         // This creates and positions a free camera (non-mesh)
         const camera = new ArcRotateCamera(
             "my first camera",
